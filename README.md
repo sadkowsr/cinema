@@ -1,4 +1,6 @@
 # Build and run
+0. You need to have installed Java 17 and setup JAVA_HOME environment variable.
+
 1. Please build and run tests:
 ```bash
 ./mvnw -T 3 clean install
