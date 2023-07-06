@@ -8,7 +8,7 @@
 2. Please run application:
 
 ```bash
- mvn spring-boot:run -pl application
+ ./mvnw spring-boot:run -pl application
 ```
 or
 ```bash
