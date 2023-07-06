@@ -4,9 +4,15 @@
 ./mvnw -T 3 clean install
 ```
 2. Please run application:
+
+```bash
+ mvn spring-boot:run -pl application
+```
+or
 ```bash
  java -jar ./application/target/application-0.0.1-SNAPSHOT.jar
 ```
+
 3. Open client API to query the service (Application must be running):
 #### http://localhost:8080/swagger-ui/index.html
 
