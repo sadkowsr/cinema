@@ -2,7 +2,6 @@ package org.sadkowski.cinema.domain.shows.model;
 
 import lombok.Builder;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 

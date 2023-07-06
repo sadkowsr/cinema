@@ -56,10 +56,10 @@ public class ApplicationStartup
         );
     }
 
-    private final String uuidString = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+    private static final String UUID_STRING = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
     private void generateRooms() {
         roomWriteRepository.save(Room.builder()
-                .roomId(UUID.fromString(uuidString ))
+                .roomId(UUID.fromString(UUID_STRING))
                 .cleanRoomDurationMinutes(30L)
                 .name("Cinema Room 1")
                 .build());
@@ -67,7 +67,7 @@ public class ApplicationStartup
 
     private void generatePlanners() {
         plannerWriteRepository.save(Planner.builder()
-                .plannerId(UUID.fromString(uuidString ))
+                .plannerId(UUID.fromString(UUID_STRING))
                 .name("Jadwiga")
                 .surname("Kowalska")
                 .build());
@@ -75,7 +75,7 @@ public class ApplicationStartup
 
     private void generateMoviesCatalog() {
         movieWriteRepository.save(Movie.builder()
-                .movieId(UUID.fromString(uuidString ))
+                .movieId(UUID.fromString(UUID_STRING))
                 .title("Lion King")
                 .durationMovieInMinutes(120L)
                 .glasses3DRequired(false)

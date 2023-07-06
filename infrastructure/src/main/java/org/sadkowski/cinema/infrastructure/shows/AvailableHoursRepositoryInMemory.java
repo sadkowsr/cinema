@@ -7,7 +7,7 @@ import org.sadkowski.cinema.domain.shows.ports.infrastructure.read.AvailableHour
 import org.sadkowski.cinema.domain.shows.ports.infrastructure.write.AvailableHoursWriteRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -20,7 +20,7 @@ public class AvailableHoursRepositoryInMemory implements AvailableHoursReadRepos
     private final Map<ShowTypeDto, AvailableHours> availableHoursByShowTypeMap;
 
     public AvailableHoursRepositoryInMemory() {
-        this.availableHoursByShowTypeMap = new HashMap<>();
+        this.availableHoursByShowTypeMap = new EnumMap<>(ShowTypeDto.class);
     }
 
     @Override

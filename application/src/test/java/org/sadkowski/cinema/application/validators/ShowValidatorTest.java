@@ -1,6 +1,6 @@
 package org.sadkowski.cinema.application.validators;
 
-import jakarta.xml.bind.ValidationException;
+import jakarta.validation.ValidationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
-import static org.sadkowski.cinema.application.shows.adapters.ShowCommandHandler.buildAddShowCommand;
+import static org.sadkowski.cinema.application.shows.handlers.ShowCommandHandler.buildAddShowCommand;
 import static org.sadkowski.cinema.domain.shows.builders.ShowBuilder.showOf;
 import static org.sadkowski.cinema.domain.shows.model.ShowTypeDto.PREMIERE;
 

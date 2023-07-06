@@ -17,6 +17,8 @@ public class ShowValidator implements Validator {
 
 private final ShowReadRepository showReadRepository;
 
+    private static final String STRING_START_FIELD_NAME = "start";
+    private static final String STRING_END_FIELD_NAME = "end";
     @Override
     public boolean supports(Class<?> clazz) {
         return Show.class.equals(clazz);
@@ -32,15 +34,15 @@ private final ShowReadRepository showReadRepository;
 
     private void checkStartEarlierThanEnd(Errors errors, Show show) {
         if (show.start().isAfter(show.end())) {
-            errors.rejectValue("start", "Start time is after end time.");
-            errors.rejectValue("end", "End time is before start time.");
+            errors.rejectValue(STRING_START_FIELD_NAME, "Start time is after end time.");
+            errors.rejectValue(STRING_END_FIELD_NAME, "End time is before start time.");
         }
     }
 
     private void checkIntersect(Errors errors, Show show) {
         if(showReadRepository.intersect(show.room().roomId(), show.start(), show.end())){
-            errors.rejectValue("start", "Show is intersecting with other show.");
-            errors.rejectValue("end", "Show is intersecting with other show.");
+            errors.rejectValue(STRING_START_FIELD_NAME, "Show is intersecting with other show.");
+            errors.rejectValue(STRING_END_FIELD_NAME, "Show is intersecting with other show.");
         }
     }
 
@@ -50,10 +52,10 @@ private final ShowReadRepository showReadRepository;
         LocalTime startTimeOfShow = show.start().toLocalTime();
         LocalTime endTimeOfShow = show.end().toLocalTime().plusMinutes(show.room().cleanRoomDurationMinutes());
         if (startTimeOfShow.isBefore(startOfWorkingHours)) {
-            errors.rejectValue("start", "Start time is before starting date of working.");
+            errors.rejectValue(STRING_START_FIELD_NAME, "Start time is before starting date of working.");
         }
         if (endTimeOfShow.isAfter(endOfWorkingHours)) {
-            errors.rejectValue("end", "End time with cleaning is after ending date of working.");
+            errors.rejectValue(STRING_END_FIELD_NAME, "End time with cleaning is after ending date of working.");
         }
     }
 

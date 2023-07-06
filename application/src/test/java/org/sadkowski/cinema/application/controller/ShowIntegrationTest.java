@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.sadkowski.cinema.application.CinemaApplication;
 import org.sadkowski.cinema.application.shows.dto.ShowCreateDto;
 import org.sadkowski.cinema.application.shows.dto.ShowDTO;
-import org.sadkowski.cinema.domain.shows.ports.application.command.ShowCommandRepository;
 import org.sadkowski.cinema.domain.shows.appservices.commands.AddShowCommand;
 import org.sadkowski.cinema.domain.shows.model.*;
-import org.sadkowski.cinema.domain.shows.ports.application.query.ShowQueryRepository;
+
+import org.sadkowski.cinema.domain.shows.ports.infrastructure.read.ShowReadRepository;
+import org.sadkowski.cinema.domain.shows.ports.infrastructure.write.ShowWriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ import static java.util.UUID.fromString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.blankOrNullString;
 import static org.hamcrest.Matchers.hasSize;
-import static org.sadkowski.cinema.application.shows.adapters.ShowCommandHandler.buildAddShowCommand;
+import static org.sadkowski.cinema.application.shows.handlers.ShowCommandHandler.buildAddShowCommand;
 import static org.sadkowski.cinema.domain.shows.model.ShowTypeDto.PREMIERE;
 import static org.sadkowski.cinema.domain.shows.builders.ShowBuilder.showOf;
 
@@ -53,10 +54,10 @@ class ShowIntegrationTest extends IntegrationTestBase {
             parse("2023-07-03T20:29:55.818Z", ISO_DATE_TIME));
 
     @Autowired
-    private final ShowQueryRepository showQueryRepository;
+    private ShowReadRepository showQueryRepository;
 
     @Autowired
-    private final ShowCommandRepository showCommandRepository;
+    private ShowWriteRepository showCommandRepository;
     @Test
     void shouldSaveShowWithCorrectData() {
         //when

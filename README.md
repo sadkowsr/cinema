@@ -1,7 +1,7 @@
 # Build and run
 1. Please build and run tests:
 ```bash
-./mvnw clean install
+./mvnw -T 3 clean install
 ```
 2. Please run application:
 ```bash
@@ -11,7 +11,7 @@
 #### http://localhost:8080/swagger-ui/index.html
 
 # Decision description for future developers
-1. The application was split into modules/packages using a hexagonal architecture.
+1. The application was split into modules using a hexagonal architecture.
 2. We decided to use Spring Boot for quick start and easy configuration.
 
 ## Domain
